@@ -20,7 +20,7 @@ struct WeatherByLocationRequest: NetworkRequestProvider {
     var url: URL {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "metaweather.com"
+        components.host = "www.metaweather.com"
         components.path = "/api/location/\(self.locationId)"
 
         guard let url = components.url else {

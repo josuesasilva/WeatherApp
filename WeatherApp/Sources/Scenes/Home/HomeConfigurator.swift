@@ -13,6 +13,14 @@ protocol HomeSceneProvider {
 
 final class HomeConfigurator: HomeSceneProvider {
     func resolveViewController() -> UIViewController {
-        return HomeViewController()
+
+        let homeViewModel = HomeViewModel(
+            networkService: NetworkService(),
+            locationId: 4118
+        )
+        let viewController = HomeViewController(viewModel: homeViewModel)
+        homeViewModel.delegate = viewController
+
+        return viewController
     }
 }

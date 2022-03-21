@@ -17,6 +17,7 @@
 		CA1A48FB27E8B9B7001A6362 /* WeatherIconRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48FA27E8B9B7001A6362 /* WeatherIconRequest.swift */; };
 		CA1A48FE27E8BBFB001A6362 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48FD27E8BBFB001A6362 /* ContentView.swift */; };
 		CA1A490127E8BC85001A6362 /* WeatherEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A490027E8BC85001A6362 /* WeatherEntity.swift */; };
+		CA1A490327E8CE4B001A6362 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A490227E8CE4B001A6362 /* HomeViewModel.swift */; };
 		CACC091827E7E22B00832BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC091727E7E22B00832BC6 /* AppDelegate.swift */; };
 		CACC091A27E7E22B00832BC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC091927E7E22B00832BC6 /* SceneDelegate.swift */; };
 		CACC091C27E7E22B00832BC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC091B27E7E22B00832BC6 /* HomeViewController.swift */; };
@@ -51,6 +52,7 @@
 		CA1A48FA27E8B9B7001A6362 /* WeatherIconRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconRequest.swift; sourceTree = "<group>"; };
 		CA1A48FD27E8BBFB001A6362 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA1A490027E8BC85001A6362 /* WeatherEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEntity.swift; sourceTree = "<group>"; };
+		CA1A490227E8CE4B001A6362 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CACC091427E7E22B00832BC6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC091727E7E22B00832BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CACC091927E7E22B00832BC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				CA1A48FC27E8BBD7001A6362 /* Views */,
 				CACC091B27E7E22B00832BC6 /* HomeViewController.swift */,
 				CACC094A27E7E4B500832BC6 /* HomeConfigurator.swift */,
+				CA1A490227E8CE4B001A6362 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				CACC094B27E7E4B500832BC6 /* HomeConfigurator.swift in Sources */,
 				CACC091827E7E22B00832BC6 /* AppDelegate.swift in Sources */,
 				CA1A490127E8BC85001A6362 /* WeatherEntity.swift in Sources */,
+				CA1A490327E8CE4B001A6362 /* HomeViewModel.swift in Sources */,
 				CACC091A27E7E22B00832BC6 /* SceneDelegate.swift in Sources */,
 				CA1A48EE27E8B542001A6362 /* NetworkEngineProvider.swift in Sources */,
 				CA1A48F427E8B5A5001A6362 /* AlamofireEngine.swift in Sources */,

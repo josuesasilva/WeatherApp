@@ -9,9 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    private let viewModel: HomeViewModelProvider
     weak var contentView: ContentView?
 
-    init() {
+    init(viewModel: HomeViewModelProvider) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -22,12 +24,37 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.loadWeather()
     }
 
     override func loadView() {
-        view = ContentView(state: .data(cityName: "Cidade", temperature: 1, maxTemperature: 2, minTemperature: 1, weather: "Boa"))
+        view = ContentView(state: .loading)
         view.backgroundColor = .white
 
         contentView = view as? ContentView
     }
+}
+
+extension HomeViewController: HomeViewModelStateDelegate {
+
+    func onHomeViewModelStateUpdate(newState: HomeViewModelState) {
+        switch newState {
+        case .fetching:
+            contentView?.setState(.loading)
+        case .ready(let viewModel):
+            contentView?.setState(
+                .data(
+                    cityName: viewModel.cityName,
+                    temperature: viewModel.temperature,
+                    maxTemperature: viewModel.maxTemperature,
+                    minTemperature: viewModel.minTemperature,
+                    weather: viewModel.weatherDescription
+                )
+            )
+        case .error:
+            contentView?.setState(.error)
+        }
+    }
+
 }

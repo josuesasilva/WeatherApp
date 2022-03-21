@@ -12,14 +12,19 @@ enum ContentViewState {
     case loading
     case data(
         cityName: String,
-        temperature: Int,
-        maxTemperature: Int,
-        minTemperature: Int,
+        temperature: String,
+        maxTemperature: String,
+        minTemperature: String,
         weather: String
     )
+    case error
 }
 
-final class ContentView: UIView {
+protocol ContentViewProvider {
+    func setState(_ state: ContentViewState)
+}
+
+final class ContentView: UIView, ContentViewProvider {
 
     // MARK: - View components
 
@@ -90,6 +95,13 @@ final class ContentView: UIView {
         return label
     }()
 
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Unable to load data"
+        label.font = .systemFont(ofSize: 18)
+        return label
+    }()
+
     // MARK: - Initializers
 
     init(state: ContentViewState) {
@@ -103,33 +115,42 @@ final class ContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Private methods
-
-    private func setState(_ state: ContentViewState) {
+    func setState(_ state: ContentViewState) {
         switch state {
         case .loading:
+            errorLabel.isHidden = true
             loading.isHidden = false
             loading.startAnimating()
             cityName.isHidden = true
             container.isHidden = true
         case .data(let cityName, let temperature, let maxTemperature, let minTemperature, let weather):
+            errorLabel.isHidden = true
             loading.stopAnimating()
             loading.isHidden = true
             container.isHidden = false
             self.cityName.isHidden = false
 
             self.cityName.text = cityName
-            self.temperature.text = "\(temperature)°"
-            self.maxTemperature.text = "H: \(maxTemperature)°"
-            self.minTemperature.text = "L: \(minTemperature)°"
+            self.temperature.text = temperature
+            self.maxTemperature.text = maxTemperature
+            self.minTemperature.text = minTemperature
             self.weatherDescription.text = weather
+        case .error:
+            loading.isHidden = true
+            loading.startAnimating()
+            cityName.isHidden = true
+            container.isHidden = true
+            errorLabel.isHidden = false
         }
     }
+
+    // MARK: - Private methods
 
     private func addSubviews() {
         addSubview(cityName)
         addSubview(container)
         addSubview(loading)
+        addSubview(errorLabel)
     }
 
     private func constrainSubviews() {
@@ -143,6 +164,9 @@ final class ContentView: UIView {
         container.snp.makeConstraints { make -> Void in
             make.centerX.equalTo(self.snp_centerXWithinMargins)
             make.top.equalTo(self.cityName.snp_bottomMargin).offset(48)
+        }
+        errorLabel.snp.makeConstraints { make -> Void in
+            make.center.equalTo(self)
         }
     }
 
