@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 enum NetworkServiceError: Error {
     case serializationError(Error)
     case emptyResponse
