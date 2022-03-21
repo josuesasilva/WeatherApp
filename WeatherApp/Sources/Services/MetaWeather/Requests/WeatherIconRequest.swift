@@ -20,8 +20,8 @@ struct WeatherIconRequest: NetworkRequestProvider {
     var url: URL {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "metaweather.com"
-        components.path = "/static/img/weather/png/\(self.weatherStateAbbreviation).svg"
+        components.host = "www.metaweather.com"
+        components.path = "/static/img/weather/png/64/\(self.weatherStateAbbreviation).png"
 
         guard let url = components.url else {
             preconditionFailure()

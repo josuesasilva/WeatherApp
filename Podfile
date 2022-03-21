@@ -8,6 +8,7 @@ target 'WeatherApp' do
   
   pod 'Alamofire', '~> 5.5'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Kingfisher', '~> 7.0'
 
   target 'WeatherAppTests' do
     inherit! :search_paths

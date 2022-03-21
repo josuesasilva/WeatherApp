@@ -12,7 +12,7 @@ struct WeatherModel {
     let maxTemperature: String
     let minTemperature: String
     let weatherDescription: String
-    let weatherAbbreviation: String
+    let iconUrl: URL
     let cityName: String
 }
 
@@ -91,7 +91,9 @@ final class HomeViewModel: HomeViewModelProvider {
                         maxTemperature: "H: \(Int(consolidatedWeather.maxTemp))°",
                         minTemperature: "L: \(Int(consolidatedWeather.minTemp))°",
                         weatherDescription: consolidatedWeather.weatherStateName,
-                        weatherAbbreviation: consolidatedWeather.weatherStateAbbreviation,
+                        iconUrl: WeatherIconRequest(
+                            weatherStateAbbreviation: consolidatedWeather.weatherStateAbbreviation
+                        ).url,
                         cityName: data.title
                     )
                 )

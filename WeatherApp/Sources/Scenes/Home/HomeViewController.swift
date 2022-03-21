@@ -5,6 +5,7 @@
 //  Created by Josué on 20/03/22.
 //
 
+import Kingfisher
 import UIKit
 
 class HomeViewController: UIViewController {
@@ -43,6 +44,7 @@ extension HomeViewController: HomeViewModelStateDelegate {
         case .fetching:
             contentView?.setState(.loading)
         case .ready(let viewModel):
+            contentView?.weatherIcon.kf.setImage(with: viewModel.iconUrl)
             contentView?.setState(
                 .data(
                     cityName: viewModel.cityName,

@@ -21,6 +21,8 @@ enum ContentViewState {
 }
 
 protocol ContentViewProvider {
+    var weatherIcon: UIImageView { get }
+
     func setState(_ state: ContentViewState)
 }
 
@@ -36,7 +38,8 @@ final class ContentView: UIView, ContentViewProvider {
         stackViewHFirstLine.axis = .horizontal
         stackViewHFirstLine.addArrangedSubview(weatherIcon)
         stackViewHFirstLine.addArrangedSubview(temperature)
-        stackViewHFirstLine.spacing = 4
+        stackViewHFirstLine.spacing = 8
+        stackViewHFirstLine.alignment = .center
 
         containerStackView.addArrangedSubview(stackViewHFirstLine)
         containerStackView.addArrangedSubview(weatherDescription)
@@ -45,14 +48,13 @@ final class ContentView: UIView, ContentViewProvider {
         stackViewHLasttLine.axis = .horizontal
         stackViewHLasttLine.addArrangedSubview(minTemperature)
         stackViewHLasttLine.addArrangedSubview(maxTemperature)
-        stackViewHLasttLine.spacing = 8
 
         containerStackView.addArrangedSubview(stackViewHLasttLine)
 
         return containerStackView
     }()
 
-    private let weatherIcon: UIImageView = {
+    let weatherIcon: UIImageView = {
        let imageView = UIImageView()
         return imageView
     }()
@@ -76,12 +78,6 @@ final class ContentView: UIView, ContentViewProvider {
         return label
     }()
 
-    private let maxTemperature: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
-        return label
-    }()
-
     private let weatherDescription: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
@@ -89,9 +85,17 @@ final class ContentView: UIView, ContentViewProvider {
         return label
     }()
 
+    private let maxTemperature: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18)
+        label.textAlignment = .center
+        return label
+    }()
+
     private let minTemperature: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
+        label.textAlignment = .center
         return label
     }()
 
@@ -123,7 +127,13 @@ final class ContentView: UIView, ContentViewProvider {
             loading.startAnimating()
             cityName.isHidden = true
             container.isHidden = true
-        case .data(let cityName, let temperature, let maxTemperature, let minTemperature, let weather):
+        case .data(
+            let cityName,
+            let temperature,
+            let maxTemperature,
+            let minTemperature,
+            let weather
+        ):
             errorLabel.isHidden = true
             loading.stopAnimating()
             loading.isHidden = true
@@ -154,6 +164,10 @@ final class ContentView: UIView, ContentViewProvider {
     }
 
     private func constrainSubviews() {
+        weatherIcon.snp.makeConstraints { make -> Void in
+            make.width.equalTo(48)
+            make.height.equalTo(48)
+        }
         loading.snp.makeConstraints { make -> Void in
             make.center.equalTo(self)
         }
