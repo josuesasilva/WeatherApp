@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		9A15A1CDFC6889E52C1C4B4A /* Pods_WeatherAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F3135E688738BE0821448F /* Pods_WeatherAppTests.framework */; };
 		C531266EDFFF2D3076E9E3DE /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C98CA8F812BA757345EC051 /* Pods_WeatherApp.framework */; };
+		CA1A48EC27E8B519001A6362 /* NetworkServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48EB27E8B519001A6362 /* NetworkServiceProvider.swift */; };
+		CA1A48EE27E8B542001A6362 /* NetworkEngineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48ED27E8B542001A6362 /* NetworkEngineProvider.swift */; };
+		CA1A48F027E8B56B001A6362 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48EF27E8B56B001A6362 /* NetworkService.swift */; };
+		CA1A48F427E8B5A5001A6362 /* AlamofireEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48F327E8B5A5001A6362 /* AlamofireEngine.swift */; };
+		CA1A48F927E8B79A001A6362 /* WeatherByLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48F827E8B79A001A6362 /* WeatherByLocationRequest.swift */; };
+		CA1A48FB27E8B9B7001A6362 /* WeatherIconRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A48FA27E8B9B7001A6362 /* WeatherIconRequest.swift */; };
 		CACC091827E7E22B00832BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC091727E7E22B00832BC6 /* AppDelegate.swift */; };
 		CACC091A27E7E22B00832BC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC091927E7E22B00832BC6 /* SceneDelegate.swift */; };
 		CACC091C27E7E22B00832BC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC091B27E7E22B00832BC6 /* HomeViewController.swift */; };
@@ -35,6 +41,12 @@
 		4C98CA8F812BA757345EC051 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9363F30CD243C1714395E576 /* Pods-WeatherAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherAppTests/Pods-WeatherAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9736748B6BE8292029F17537 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
+		CA1A48EB27E8B519001A6362 /* NetworkServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProvider.swift; sourceTree = "<group>"; };
+		CA1A48ED27E8B542001A6362 /* NetworkEngineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEngineProvider.swift; sourceTree = "<group>"; };
+		CA1A48EF27E8B56B001A6362 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CA1A48F327E8B5A5001A6362 /* AlamofireEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireEngine.swift; sourceTree = "<group>"; };
+		CA1A48F827E8B79A001A6362 /* WeatherByLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherByLocationRequest.swift; sourceTree = "<group>"; };
+		CA1A48FA27E8B9B7001A6362 /* WeatherIconRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconRequest.swift; sourceTree = "<group>"; };
 		CACC091427E7E22B00832BC6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC091727E7E22B00832BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CACC091927E7E22B00832BC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +101,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CA1A48EA27E8B4FF001A6362 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CA1A48F127E8B58B001A6362 /* Engines */,
+				CA1A48EB27E8B519001A6362 /* NetworkServiceProvider.swift */,
+				CA1A48ED27E8B542001A6362 /* NetworkEngineProvider.swift */,
+				CA1A48EF27E8B56B001A6362 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CA1A48F127E8B58B001A6362 /* Engines */ = {
+			isa = PBXGroup;
+			children = (
+				CA1A48F327E8B5A5001A6362 /* AlamofireEngine.swift */,
+			);
+			path = Engines;
+			sourceTree = "<group>";
+		};
+		CA1A48F527E8B71E001A6362 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA1A48F627E8B727001A6362 /* MetaWeather */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CA1A48F627E8B727001A6362 /* MetaWeather */ = {
+			isa = PBXGroup;
+			children = (
+				CA1A48F727E8B75F001A6362 /* Requests */,
+			);
+			path = MetaWeather;
+			sourceTree = "<group>";
+		};
+		CA1A48F727E8B75F001A6362 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				CA1A48F827E8B79A001A6362 /* WeatherByLocationRequest.swift */,
+				CA1A48FA27E8B9B7001A6362 /* WeatherIconRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		CACC090B27E7E22B00832BC6 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +185,8 @@
 		CACC094727E7E26B00832BC6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CA1A48F527E8B71E001A6362 /* Services */,
+				CA1A48EA27E8B4FF001A6362 /* Networking */,
 				CACC095427E7EF3100832BC6 /* Scenes */,
 				CACC094827E7E43900832BC6 /* Configuration */,
 			);
@@ -359,10 +417,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1A48EC27E8B519001A6362 /* NetworkServiceProvider.swift in Sources */,
 				CACC091C27E7E22B00832BC6 /* HomeViewController.swift in Sources */,
+				CA1A48F927E8B79A001A6362 /* WeatherByLocationRequest.swift in Sources */,
+				CA1A48FB27E8B9B7001A6362 /* WeatherIconRequest.swift in Sources */,
 				CACC094B27E7E4B500832BC6 /* HomeConfigurator.swift in Sources */,
 				CACC091827E7E22B00832BC6 /* AppDelegate.swift in Sources */,
 				CACC091A27E7E22B00832BC6 /* SceneDelegate.swift in Sources */,
+				CA1A48EE27E8B542001A6362 /* NetworkEngineProvider.swift in Sources */,
+				CA1A48F427E8B5A5001A6362 /* AlamofireEngine.swift in Sources */,
+				CA1A48F027E8B56B001A6362 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
