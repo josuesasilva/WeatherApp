@@ -5,4 +5,149 @@
 //  Created by Josué on 21/03/22.
 //
 
-import Foundation
+import SnapKit
+import UIKit
+
+enum ContentViewState {
+    case loading
+    case data(
+        cityName: String,
+        temperature: Int,
+        maxTemperature: Int,
+        minTemperature: Int,
+        weather: String
+    )
+}
+
+final class ContentView: UIView {
+
+    // MARK: - View components
+
+    private lazy var container: UIStackView = {
+        let containerStackView = UIStackView()
+        containerStackView.axis = .vertical
+
+        let stackViewHFirstLine = UIStackView()
+        stackViewHFirstLine.axis = .horizontal
+        stackViewHFirstLine.addArrangedSubview(weatherIcon)
+        stackViewHFirstLine.addArrangedSubview(temperature)
+        stackViewHFirstLine.spacing = 4
+
+        containerStackView.addArrangedSubview(stackViewHFirstLine)
+        containerStackView.addArrangedSubview(weatherDescription)
+
+        let stackViewHLasttLine = UIStackView()
+        stackViewHLasttLine.axis = .horizontal
+        stackViewHLasttLine.addArrangedSubview(minTemperature)
+        stackViewHLasttLine.addArrangedSubview(maxTemperature)
+        stackViewHLasttLine.spacing = 8
+
+        containerStackView.addArrangedSubview(stackViewHLasttLine)
+
+        return containerStackView
+    }()
+
+    private let weatherIcon: UIImageView = {
+       let imageView = UIImageView()
+        return imageView
+    }()
+
+    private let loading: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.color = .gray
+        return activityIndicator
+    }()
+
+    private let cityName: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 36)
+        return label
+    }()
+
+    private let temperature: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 48)
+        return label
+    }()
+
+    private let maxTemperature: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18)
+        return label
+    }()
+
+    private let weatherDescription: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textAlignment = .center
+        return label
+    }()
+
+    private let minTemperature: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18)
+        return label
+    }()
+
+    // MARK: - Initializers
+
+    init(state: ContentViewState) {
+        super.init(frame: .zero)
+        setState(state)
+        setup()
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Private methods
+
+    private func setState(_ state: ContentViewState) {
+        switch state {
+        case .loading:
+            loading.isHidden = false
+            loading.startAnimating()
+            cityName.isHidden = true
+            container.isHidden = true
+        case .data(let cityName, let temperature, let maxTemperature, let minTemperature, let weather):
+            loading.stopAnimating()
+            loading.isHidden = true
+            container.isHidden = false
+            self.cityName.isHidden = false
+
+            self.cityName.text = cityName
+            self.temperature.text = "\(temperature)°"
+            self.maxTemperature.text = "H: \(maxTemperature)°"
+            self.minTemperature.text = "L: \(minTemperature)°"
+            self.weatherDescription.text = weather
+        }
+    }
+
+    private func addSubviews() {
+        addSubview(cityName)
+        addSubview(container)
+        addSubview(loading)
+    }
+
+    private func constrainSubviews() {
+        loading.snp.makeConstraints { make -> Void in
+            make.center.equalTo(self)
+        }
+        cityName.snp.makeConstraints { make -> Void in
+            make.top.equalTo(self.snp_topMargin)
+            make.left.equalTo(self.snp_leftMargin)
+        }
+        container.snp.makeConstraints { make -> Void in
+            make.centerX.equalTo(self.snp_centerXWithinMargins)
+            make.top.equalTo(self.cityName.snp_bottomMargin).offset(48)
+        }
+    }
+
+    private func setup() {
+        addSubviews()
+        constrainSubviews()
+    }
+}

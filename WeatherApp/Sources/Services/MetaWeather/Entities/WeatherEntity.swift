@@ -8,19 +8,19 @@
 import Foundation
 
 enum WeatherEntity {
-    
+
     struct Wheather: Codable {
         let title: String
         let consolidatedWeather: ConsolidatedWeather
     }
-    
+
     struct ConsolidatedWeather: Codable {
         let weatherStateName: String
         let weatherStateAbbreviation: String
         let minTemp: Int
         let maxTemp: Int
         let theTemp: Int
-        
+
         private enum CodingKeys: String, CodingKey {
             case weatherStateName = "weather_state_name"
             case weatherStateAbbreviation = "weather_state_abbr"
